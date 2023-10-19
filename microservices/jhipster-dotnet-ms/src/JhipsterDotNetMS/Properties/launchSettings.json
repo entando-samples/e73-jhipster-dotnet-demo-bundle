@@ -1,0 +1,30 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:3524",
+      "sslPort": 44338
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "NhipsterSampleApplication": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:8082;http://localhost:8081",
+      "environmentVariables": {
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "SPRING_DATASOURCE_URL": "jdbc:postgresql://localhost:5432/e73-jhipster-dotnet-demo-bundle",
+          "SPRING_DATASOURCE_USERNAME": "e73-jhipster-dotnet-demo-bundle-user",
+          "SPRING_DATASOURCE_PASSWORD": "e73-jhipster-dotnet-demo-bundle-password"
+      }
+    }
+  }
+}

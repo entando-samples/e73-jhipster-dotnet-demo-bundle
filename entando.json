@@ -1,0 +1,25 @@
+{
+    "microservices": [
+        {
+            "name": "jhipster-dotnet-ms",
+            "stack": "custom",
+            "dbms": "postgresql",
+            "healthCheckPath": "/api/health",
+            "commands": {
+                "run": "dotnet run --project ./src/JhipsterDotNetMS/JhipsterDotNetMS.csproj",
+                "build": "echo 'no-op build'",
+                "pack": "docker build -t e73-dotnet-demo ."
+            },
+            "version": "0.0.1"
+        }
+    ],
+    "microfrontends": [],
+    "svc": [        
+        "postgresql",
+        "keycloak"
+    ],
+    "name": "e73-jhipster-dotnet-demo-bundle",
+    "version": "0.0.1",
+    "description": "e73-jhipster-dotnet-demo-bundle description",
+    "type": "bundle"
+}
