@@ -10,14 +10,20 @@ The project contains a .Net 6 Blueprint-generated microservice for Entando 7.3
 3. For local development you have to install .Net6 
 
 ## Running local version for development
-1. ent bundle svc run --all
-2. ent bundle run --all
+1. `ent bundle svc run --all`
+2. `ent bundle run --all`
+
+You can access Swagger-UI at URL: 
+`http://localhost:8081/swagger/index.html`
 
 ## Build and publish steps  
-1. ent bundle pack 
-2. ent bundle publish
-3. ent bundle deploy
-4. ent bundle install
+1. `ent bundle pack`
+2. `ent bundle publish`
+3. `ent bundle deploy`
+4. `ent bundle install`
+
+Swagger-UI is also available in the Entando platform after the bundle installation at URL:
+`http://[YOUR_APP_BUNDLE_INGRESS]/jhipster-dotnet-ms/swagger/index.html`
 
 See https://developer.entando.com for more information.
 
