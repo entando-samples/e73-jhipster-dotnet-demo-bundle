@@ -6,11 +6,16 @@ using Serilog;
 using System;
 using System.IO;
 using System.Security.Authentication;
+using System.Security.Claims;
 using JhipsterDotNetMS;
 using JhipsterDotNetMS.Configuration;
+using Keycloak.AuthServices.Authentication;
+using Keycloak.AuthServices.Common;
+using Microsoft.AspNetCore.DataProtection;
 using IStartup = JhipsterDotNetMS.IStartup;
 using static JHipsterNet.Core.Boot.BannerPrinter;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Winton.Extensions.Configuration.Consul;
 
 const string ConsulSection = "Consul";
@@ -27,7 +32,26 @@ try
         Args = args
     };
     var builder = WebApplication.CreateBuilder(webAppOptions);
+    /*ENTANDO Add Keycloak adapter*/
+    string authServerUrl = Environment.GetEnvironmentVariable("KEYCLOAK_AUTH_URL") ?? string.Empty;
+    string realm = Environment.GetEnvironmentVariable("KEYCLOAK_REALM") ?? string.Empty;
+    string client = Environment.GetEnvironmentVariable("KEYCLOAK_CLIENT_ID") ?? string.Empty;
+    string secretEnv = Environment.GetEnvironmentVariable("KEYCLOAK_CLIENT_SECRET") ?? string.Empty;
 
+
+    var secret = new KeycloakClientInstallationCredentials { Secret = secretEnv };
+
+    var authenticationOptions = new KeycloakAuthenticationOptions
+    {
+        AuthServerUrl = authServerUrl,
+        Realm = realm,
+        Resource = client ,
+        Credentials = secret,
+        SslRequired =  "none",
+    };
+    
+    builder.Services.AddKeycloakAuthentication(authenticationOptions);
+    
     /* ENTANDO: Consul is not deployed in the entando instance 
        
     builder.Configuration.AddConsul(
@@ -50,7 +74,11 @@ try
     startup.ConfigureServices(builder.Services, builder.Environment);
 
     WebApplication app = builder.Build();
-
+    
+    /* ENTANDO: enable authentication and authorization */
+    app.UseAuthentication();
+    app.UseAuthorization();
+    
     startup.ConfigureEntandoContext(app, app.Environment);
     startup.ConfigureMiddleware(app, app.Environment);
     startup.ConfigureEndpoints(app, app.Environment);

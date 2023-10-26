@@ -11,14 +11,17 @@ using AutoMapper;
 using System.Linq;
 using JhipsterDotNetMS.Domain.Services.Interfaces;
 using JhipsterDotNetMS.Infrastructure.Web.Rest.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-//[Authorize]
+
 namespace JhipsterDotNetMS.Controllers
 {
     [Route("api/conferences")]
     [ApiController]
+    // ENTANDO -> Add Authorize Decorator
+    [Authorize]
     public class ConferencesController : ControllerBase
     {
         private const string EntityName = "conference";

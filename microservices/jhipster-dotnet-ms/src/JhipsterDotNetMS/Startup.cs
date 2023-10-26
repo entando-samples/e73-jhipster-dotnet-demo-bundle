@@ -3,7 +3,9 @@ using JhipsterDotNetMS.Infrastructure.Data;
 using JhipsterDotNetMS.Configuration;
 using JhipsterDotNetMS.Infrastructure.Configuration;
 using JhipsterDotNetMS.Configuration.Consul;
+using Keycloak.AuthServices.Authentication;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -22,16 +24,18 @@ public class Startup : IStartup
     {
         services
             .AddAppSettingsModule(configuration);
-            /*ENTANDO
+            /*ENTANDO Disable consul
             .AddConsul(configuration);
             */
-
             AddDatabase(configuration, services);
 }
 
     public virtual void ConfigureServices(IServiceCollection services, IHostEnvironment environment)
     {
+
         services
+            /* ENTANDO Disable Security Module , use keycloak adapter instead
+            .AddSecurityModule()*/
             .AddProblemDetailsModule(environment)
             .AddAutoMapperModule()
             .AddSwaggerModule()
@@ -43,14 +47,15 @@ public class Startup : IStartup
     public virtual void ConfigureMiddleware(IApplicationBuilder app, IHostEnvironment environment)
     {
         IServiceProvider serviceProvider = app.ApplicationServices;
-            var securitySettingsOptions = serviceProvider.GetRequiredService<IOptions<SecuritySettings>>();
-            var securitySettings = securitySettingsOptions.Value;
-           
-            app
-                .UseApplicationSecurity(securitySettings)
+        var securitySettingsOptions = serviceProvider.GetRequiredService<IOptions<SecuritySettings>>();
+        var securitySettings = securitySettingsOptions.Value;
+
+        app
+            /* ENTANDO Disable Application security, use keycloak adapter instead
+            .UseApplicationSecurity(securitySettings) */
                 .UseApplicationProblemDetails()
                 /* ENTANDO
-                 .UseConsul() */
+                .UseConsul() */
                 .UseApplicationDatabase(environment);
 
     }

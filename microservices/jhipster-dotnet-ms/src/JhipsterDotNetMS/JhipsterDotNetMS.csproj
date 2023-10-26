@@ -20,6 +20,8 @@
         <PackageReference Include="JHipsterNet.Web" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
         <PackageReference Include="Hellang.Middleware.ProblemDetails" />
+        <PackageReference Include="Keycloak.AuthServices.Authentication" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
         <PackageReference Include="Scrutor" />

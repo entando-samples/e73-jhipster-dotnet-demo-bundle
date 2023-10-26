@@ -9,6 +9,7 @@
     <ItemGroup>
         <PackageReference Include="JHipsterNet.Core" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
+        <PackageReference Include="Keycloak.AuthServices.Authentication" />
         <PackageReference Include="LanguageExt.Core" />
     </ItemGroup>
 

@@ -23,7 +23,11 @@
           "ASPNETCORE_ENVIRONMENT": "Development",
           "SPRING_DATASOURCE_URL": "jdbc:postgresql://localhost:5432/e73-jhipster-dotnet-demo-bundle",
           "SPRING_DATASOURCE_USERNAME": "e73-jhipster-dotnet-demo-bundle-user",
-          "SPRING_DATASOURCE_PASSWORD": "e73-jhipster-dotnet-demo-bundle-password"
+          "SPRING_DATASOURCE_PASSWORD": "e73-jhipster-dotnet-demo-bundle-password",
+          "KEYCLOAK_AUTH_URL":  "http://localhost:9080/auth",
+          "KEYCLOAK_REALM": "entando-dev",
+          "KEYCLOAK_CLIENT_ID": "web_app",
+          "KEYCLOAK_CLIENT_SECRET": "web_app"
       }
     }
   }

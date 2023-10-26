@@ -12,6 +12,7 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="FakeItEasy" />
+        <PackageReference Include="Keycloak.AuthServices.Authentication" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />

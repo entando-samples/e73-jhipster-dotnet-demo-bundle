@@ -6,4 +6,8 @@
         <OutputType>Library</OutputType>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Keycloak.AuthServices.Authentication" />
+    </ItemGroup>
+
 </Project>
